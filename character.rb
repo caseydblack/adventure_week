@@ -7,7 +7,7 @@ class Character #base class for characters
 	end
 
 	def heal
-		@chracterhealth += 5
+		@characterhealth += 15
 	end
 
 	  def show_current_hp
