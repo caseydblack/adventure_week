@@ -6,7 +6,7 @@ class Boss1
   end
 
   def subtract_hp(amount)
-    @bosshp = @bosshp - (amount * 5)
+    @bosshp = @bosshp - amount
   end
 
   def show_current_hp

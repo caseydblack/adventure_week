@@ -24,10 +24,27 @@ while godzilla.show_current_hp >=1 && character.show_current_hp >=1
 	action = gets.chomp.to_i
 
 	if action == 1 && godzilla.show_current_hp > 1
-		puts "How many times do you attack?"
+		puts "Where do you strike?"
+		puts "Press 1 to strike it's head"
+		puts "Press 2 to strike it's torso"
+		puts "Press 3 to strike it's legs"
+
 		amount = gets.chomp.to_i #fills the "amount" local variable in boss1.rb
-		godzilla.subtract_hp(amount)
-		bosshp = godzilla.show_current_hp
+
+		if amount == 1 
+			amount = 15
+			godzilla.subtract_hp(amount)
+			bosshp = godzilla.show_current_hp
+		elsif amount == 2
+			amount = 10
+			godzilla.subtract_hp(amount)
+			bosshp = godzilla.show_current_hp
+		elsif amount == 3
+			amount = 5
+			godzilla.subtract_hp(amount)
+			bosshp = godzilla.show_current_hp
+		end
+
 		if godzilla.show_current_hp > 1 && character.show_current_hp > 1
 			puts "You attack ferociously. Godzilla has #{bosshp} left."
 			character.subtract_character_hp(bosshit)
