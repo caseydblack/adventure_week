@@ -7,7 +7,7 @@ class Character #base class for characters
 	end
 
 	def heal
-		@characterhealth += 15
+		@characterhealth += (1 + rand(15..20))
 	end
 
 	  def show_current_hp

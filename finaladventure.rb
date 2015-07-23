@@ -16,7 +16,7 @@ die = Die.new
 puts "Here comes Godzilla, #{character_name}, get ready!"
 
 while godzilla.show_current_hp >=1 && character.show_current_hp >=1
-	bosshit = 10 #fills the "bosshit" local variable in character.rb
+	bosshit = (1 + rand(10..15)) #fills the "bosshit" local variable in character.rb
 	puts "Attack, Heal, or Flee #{character_name}?"
 	puts "Press 1 to attack"
 	puts "Press 2 to heal"
