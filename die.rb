@@ -1,13 +1,10 @@
-# die.rb
 class Die
+  attr_accessor :number_showing
+
+  alias_method :showing, :number_showing
 
   def roll
-     @numberShowing = 1 + rand(5)
-    #rand(5) returns a random-ish number between 0-4
-  end
-
-  def showing
-    return @numberShowing
+     @number_showing = 1 + rand(5)
   end
 
 end
