@@ -16,7 +16,7 @@ die = Die.new
 puts "An enemy approaches with #{mothra.hp}HP, get ready!"
 
 while mothra.hp >=1 && character.hp >=1
-	hp = (1 + rand(10..15)) #fills the "bosshit" local variable in character.rb
+	hp = (1 + rand(10..15)) #fills the "hp" local variable in character.rb
 	puts "Attack, Heal, or Flee #{character_name}?"
 	puts "Press 1 to attack"
 	puts "Press 2 to heal"
