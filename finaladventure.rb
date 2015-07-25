@@ -3,6 +3,7 @@ require_relative 'characters/character'
 require_relative 'characters/pcs/paladin'
 require_relative 'characters/pcs/wizard'
 require_relative 'die'
+require_relative 'action_selector'
 require 'pry'
 
 puts "Hello, what's your name?"
@@ -12,6 +13,7 @@ character_name = gets.chomp.to_s
 character = Characters::Character.new(character_name, 100) #creates character object with user input from character.rb
 mothra = Characters::Npcs::Mothra.new(250) #creates boss object named mothra from boss1.rb
 die = Die.new
+encounter = action_selector.new
 
 puts "An enemy approaches with #{mothra.hp}HP, get ready!"
 
