@@ -1,9 +1,11 @@
 class ActionSelector
-	def selector
-	end
 
 	def get_input
 		action = gets.chomp.to_i
+	end
+
+	def prints_action(selector)
+		@selector = action
 	end
 
 	def print_options(text, actions)
