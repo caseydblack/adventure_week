@@ -23,7 +23,7 @@ while mothra.hp >=1 && character.hp >=1
 	encounter.print_options("Attack, Heal, or Flee #{character_name}?", ['attack', 'heal', 'flee'])
 	action = encounter.get_input
 
-	if action == 0 && mothra.hp > 1
+	if action == 0
 	encounter.print_options("Where do you strike?", ['head', 'torso', 'leg'])
 	amount = encounter.get_input
 
@@ -51,12 +51,12 @@ while mothra.hp >=1 && character.hp >=1
 			puts "mothra attacks ferociously. You have #{character.hp}HP left, #{character_name}."
 		end
 
-	elsif action == 1 && mothra.hp > 1
+	elsif action == 1
 		character.damage!(hp)
 		character.heal!
 		puts "mothra attacks ferociously. You have #{character.hp}HP left, #{character_name}."
 
-	elsif action == 2 && mothra.hp > 1
+	elsif action == 2
 		fleevalue = die.roll
 
 		if fleevalue == 1
