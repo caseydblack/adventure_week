@@ -18,7 +18,7 @@ puts "An enemy approaches with #{mothra.hp}HP get ready!"
 puts "You have #{character.hp}HP, #{character_name}."
 
 while mothra.hp >=1 && character.hp >=1
-	hp = rand(11..16) #fills the "hp" local variable in character.rb
+	hp = rand(13..18) #fills the "hp" local variable in character.rb
 	encounter.print_options("Attack, Heal, or Flee #{character_name}?", ['attack', 'heal', 'flee'])
 	action = encounter.get_input
 
@@ -27,13 +27,13 @@ while mothra.hp >=1 && character.hp >=1
 	amount = encounter.get_input
 
 		if amount == 0
-			amount = 15
+			amount = rand(16..21)
 			mothra.subtract_hp(amount)
 		elsif amount == 1
-			amount = 10
+			amount = rand(11..16)
 			mothra.subtract_hp(amount)
 		elsif amount == 2
-			amount = 5
+			amount = rand(6..11)
 			mothra.subtract_hp(amount)
 		end
 
@@ -62,7 +62,7 @@ while mothra.hp >=1 && character.hp >=1
 			mothra.subtract_hp(1000)
 			puts "You ran away, #{character_name}. Very bold of you."
 		elsif flee_value != 1
-			hp = 25
+			hp = rand(21..26)
 			character.damage!(hp)
 			puts "You failed to escape, #{character_name}, and mothra attacked ferociously."
 			if character.hp < 1

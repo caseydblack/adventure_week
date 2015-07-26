@@ -15,7 +15,7 @@ module Characters
   	def heal!
       return puts "You can only heal 5 times." if @heal_attempts == 5
       @heal_attempts += 1
-  		@hp += rand(26..31)
+  		@hp += rand(21..26)
   	end
 
     def damage!(hp)
