@@ -56,12 +56,12 @@ while mothra.hp >=1 && character.hp >=1
 		puts "mothra attacks ferociously. You have #{character.hp}HP left, #{character_name}."
 
 	elsif action == 2
-		fleevalue = die.roll
+		flee_value = die.roll
 
-		if fleevalue == 1
+		if flee_value == 1
 			mothra.subtract_hp(1000)
 			puts "You ran away, #{character_name}. Very bold of you."
-		elsif fleevalue != 1
+		elsif flee_value != 1
 			hp = 25
 			character.damage!(hp)
 			puts "You failed to escape, #{character_name}, and mothra attacked ferociously."
