@@ -4,7 +4,6 @@ require_relative 'characters/pcs/paladin'
 require_relative 'characters/pcs/wizard'
 require_relative 'die'
 require_relative 'action_selector'
-require 'pry'
 
 puts "Hello, what's your name?"
 
