@@ -10,8 +10,8 @@ puts "Hello, what's your name?"
 character_name = gets.chomp.to_s
 
 character = Characters::Character.new("Player One", 100) #creates character object from character.rb
-player_two = Characters::Character.new("Player Two", 10)
-mothra = Characters::Npcs::Mothra.new(350) #creates boss object named mothra from boss.rb
+player_two = Characters::Character.new("Player Two", 100)
+mothra = Characters::Npcs::Mothra.new(275) #creates boss object named mothra from boss.rb
 die = Die.new
 encounter = ActionSelector.new
 
@@ -64,7 +64,9 @@ while mothra.hp >=1
 
 		elsif character.hp > 1 && mothra.hp > 1
 			party.each do |member|
-				puts "Mothra attacks #{member.name} ferociously. #{member.name} has #{member.hp}HP left."
+				unless member.hp < 1
+					puts "Mothra attacks #{member.name} ferociously. #{member.name} has #{member.hp}HP left."
+				end
 			end
 		end
 
@@ -73,12 +75,14 @@ while mothra.hp >=1
 		party.each do |member|
 			hp = rand(13..18)
 			member.damage!(hp)
-				if member.hp < 1
+				if member.hp <= 0
 					party.delete(member)
 					puts "#{member.name} died."
 				end
 			member.heal!
-			puts "mothra attacks ferociously. #{member.name} has #{member.hp}HP left, #{character_name}."
+			unless member.hp < 1
+					puts "mothra attacks ferociously. #{member.name} has #{member.hp}HP left, #{character_name}."
+			end
 		end
 
 		if party.empty? == true
@@ -100,11 +104,14 @@ while mothra.hp >=1
 					party.delete(member)
 					puts "#{member.name} died."
 				end
-				puts "you failed to escape, #{character_name}, and Mothra fucked up #{member.name}"
-				puts "#{member.name} has #{member.hp}HP left."
+					unless member.hp <1
+						puts "you failed to escape, #{character_name}, and Mothra fucked up #{member.name}"
+						puts "#{member.name} has #{member.hp}HP left."
+					end
 			end
 			if party.empty? == true
 				puts "Game over, #{character_name}."
+				exit
 			end
 
 		end
