@@ -10,8 +10,8 @@ puts "Hello, what's your name?"
 character_name = gets.chomp.to_s
 
 character = Characters::Character.new("Player One", 100) #creates character object from character.rb
-player_two = Characters::Character.new("Player Two", 100)
-mothra = Characters::Npcs::Mothra.new(250) #creates boss object named mothra from boss.rb
+player_two = Characters::Character.new("Player Two", 10)
+mothra = Characters::Npcs::Mothra.new(350) #creates boss object named mothra from boss.rb
 die = Die.new
 encounter = ActionSelector.new
 
@@ -49,13 +49,18 @@ while mothra.hp >=1
 			party.each do |member|
 				hp = rand(13..18)
 				member.damage!(hp)
+				if member.hp < 1
+					party.delete(member)
+					puts "#{member.name} died."
+				end
 			end
 		elsif mothra.hp < 1 && character.hp > 1
 			puts "You killed mothra, #{character_name}!"
 		end
 
-		if character.hp < 1
-			puts "You died, #{character_name}."
+		if party.empty? == true
+			puts "Game over, #{character_name}."
+			exit
 
 		elsif character.hp > 1 && mothra.hp > 1
 			party.each do |member|
@@ -68,8 +73,17 @@ while mothra.hp >=1
 		party.each do |member|
 			hp = rand(13..18)
 			member.damage!(hp)
+				if member.hp < 1
+					party.delete(member)
+					puts "#{member.name} died."
+				end
 			member.heal!
 			puts "mothra attacks ferociously. #{member.name} has #{member.hp}HP left, #{character_name}."
+		end
+
+		if party.empty? == true
+			puts "Game over, #{character_name}."
+			exit
 		end
 
 	elsif action == 2
@@ -82,11 +96,15 @@ while mothra.hp >=1
 			party.each do |member|
 				hp = rand(21..26)
 				member.damage!(hp)
+				if member.hp < 1
+					party.delete(member)
+					puts "#{member.name} died."
+				end
 				puts "you failed to escape, #{character_name}, and Mothra fucked up #{member.name}"
 				puts "#{member.name} has #{member.hp}HP left."
 			end
-			if character.hp < 1
-				puts "You died, #{character_name}."
+			if party.empty? == true
+				puts "Game over, #{character_name}."
 			end
 
 		end
