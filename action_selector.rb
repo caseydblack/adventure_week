@@ -11,3 +11,5 @@ class ActionSelector
 		end
 	end
 end
+
+#Just always run
